@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<title>Basic structure of an HTML document</title>
+    
+<link rel="stylesheet" type="text/css" href="../CssFiles/layout.css">
+
+<script src="https://www.googletagservices.com/activeview/js/current/osd.js?cb=%2Fr20100101"></script><script type="text/javascript" language="javascript" src="../js-support-functions/general.js"></script>
+
+<body>
+    <script>
+        function playSound(e) {
+            const audio = document.querySelectorAll(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelectorAll(`.key[data-key="${e.keyCode}"]`);
+            if(!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing');
+        }
+
+        function removeTranstion(e) {
+            if(e.propertyName !== 'transform') return;
+            this.classList.remove('playing');
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach((key)=> key.addEventListener('transitionend', removeTranstion));
+
+        window.addEventListener('keydown', playSound);
+
+    </script>    
+</body>
+</html>
