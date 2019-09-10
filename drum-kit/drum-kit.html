@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html>
-<title>Basic structure of an HTML document</title>
+<title>Drum kit</title>
     
 <link rel="stylesheet" type="text/css" href="../CssFiles/layout.css">
 
-<script src="https://www.googletagservices.com/activeview/js/current/osd.js?cb=%2Fr20100101"></script><script type="text/javascript" language="javascript" src="../js-support-functions/general.js"></script>
-
 <body>
+    <div class="keys">
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>        
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+    </div>
+
+    <audio data-key="83" src="sound/clap.wav"></audio>
+    <audio data-key="68" src="sound/hihat.wav"></audio>
+    <audio data-key="70" src="sound/kick.wav"></audio>
+    <audio data-key="65" src="sound/openhat.wav"></audio>
+    <audio data-key="71" src="sound/boom.wav"></audio>
+    <audio data-key="72" src="sound/ride.wav"></audio>
+    <audio data-key="74" src="sound/snare.wav"></audio>
+    <audio data-key="75" src="sound/tom.wav"></audio>
+    <audio data-key="76" src="sound/tink.wav"></audio>
+
     <script>
         function playSound(e) {
             const audio = document.querySelectorAll(`audio[data-key="${e.keyCode}"]`);
