@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <title>
+        playing with css variable
+    </title>
+    <body>
+        <style>
+            body {
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 50px;
+            }
+            :root {
+                --base-color: yellow;
+                --spacing: 10px;
+                --blur: 
+            }
+            header {
+                text-align: center;
+                background: grey;
+                color: aqua;
+            }
+            .image {
+                margin: 50px auto;
+                width: 800px;
+                padding: 10px 0px;
+                border: 1px solid grey;
+                background: yellow;
+            }
+        </style>
+        <div>
+            <header>
+                <h3>Playing with CSS variable using JS</h3>
+            </header>
+
+            <div>
+                <lable>SPACING :</lable>
+                <input type="range" min="10" max="200"/>
+                <lable>BLUR :</lable>
+                <input type="range" min="10" max="200"/>
+                <lable>BASE-COLOR :</lable>
+                <input type="color" value="yellow"/>
+            </div>
+            <div class="image">
+                <img src="Capture.JPG">
+            </div>
+        </div>
+        <Script>
+            
+        </Script>
+    </body>
+</html>
