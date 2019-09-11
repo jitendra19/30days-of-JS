@@ -9,21 +9,19 @@
                 position: absolute;
                 top: 50%;
                 transform-origin: 100%;
+                transform: rotate(90deg);
             }            
 
             .hour-hand {
                 height: 6px;
-                transform: rotate(20deg);
             }
 
             .min-hand {
                 height: 4px;
-                transform: rotate(30deg);
             }
 
             .second-hand {
                 height: 2px;
-                transform: rotate(40deg);
             }
 
             .clock {
@@ -65,7 +63,27 @@
         </div>
 
         <script>
-            
+            const secondHand =  document.querySelector('.second-hand');
+            const minHand =  document.querySelector('.min-hand');
+            const hourHand =  document.querySelector('.hour-hand');
+
+            function setTime() {
+                const now = new Date();
+                
+                const seconds = now.getSeconds();
+                const secondDegree = ((seconds / 60) * 360) + 90;
+                secondHand.style.transform = `rotate(${secondDegree}deg)`;
+
+                const min = now.getMinutes();
+                const minDegree = ((min / 60) * 360) + 90;
+                minHand.style.transform = `rotate(${minDegree}deg)`;
+
+                const hours = now.getHours();
+                const hoursDegree = ((hours / 12) * 360) + 90;
+                hourHand.style.transform = `rotate(${hoursDegree}deg)`;
+            }
+
+            setInterval(setTime, 1000);
         </script>
     </body>
 </html>
