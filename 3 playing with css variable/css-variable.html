@@ -12,7 +12,7 @@
                 font-weight: 100;
             }
             :root {
-                --base-color: yellow;
+                --base-color: #ffc600;
                 --spacing: 10px;
                 --blur: 10px;
             }
@@ -34,21 +34,28 @@
             <header>
                 <span class="h2">Playing with CSS variable using JS</span>
             </header>
-
             <div>
                 <lable for="spacing">SPACING :</lable>
-                <input type="range" name="spacing" min="10" max="200" value="10"/>
+                <input type="range" name="spacing" min="10" max="200" value="10" data-suffix="px"/>
                 <lable for="blur">BLUR :</lable>
-                <input type="range" name="blur" min="0" max="25"  value="10"/>
-                <lable for="base">BASE-COLOR :</lable>
-                <input type="color" name="base" value="#ffc600"/>
+                <input type="range" name="blur" min="0" max="25"  value="10" data-suffix="px"/>
+                <lable for="base-color">BASE-COLOR :</lable>
+                <input type="color" name="base-color" value="#ffc600"/>
             </div>
             <div class="image">
                 <img src="Capture.JPG">
             </div>
         </div>
         <Script>
-            
+            const inputs = document.querySelectorAll('input');
+            function handleChanges() {
+                const suffix = this.dataset.suffix || '';
+                document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix);
+            }
+            inputs.forEach((input)=> {
+                input.addEventListener('mousemove', handleChanges);
+                input.addEventListener('change', handleChanges);
+            });
         </Script>
     </body>
 </html>
