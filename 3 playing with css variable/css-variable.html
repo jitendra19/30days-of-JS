@@ -9,11 +9,12 @@
                 text-align: center;
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 50px;
+                font-weight: 100;
             }
             :root {
                 --base-color: yellow;
                 --spacing: 10px;
-                --blur: 
+                --blur: 10px;
             }
             header {
                 text-align: center;
@@ -23,23 +24,24 @@
             .image {
                 margin: 50px auto;
                 width: 800px;
-                padding: 10px 0px;
+                padding: var(--spacing);
                 border: 1px solid grey;
-                background: yellow;
+                background: var(--base-color);
+                filter: blur(var(--blur));
             }
         </style>
         <div>
             <header>
-                <h3>Playing with CSS variable using JS</h3>
+                <span class="h2">Playing with CSS variable using JS</span>
             </header>
 
             <div>
-                <lable>SPACING :</lable>
-                <input type="range" min="10" max="200"/>
-                <lable>BLUR :</lable>
-                <input type="range" min="10" max="200"/>
-                <lable>BASE-COLOR :</lable>
-                <input type="color" value="yellow"/>
+                <lable for="spacing">SPACING :</lable>
+                <input type="range" name="spacing" min="10" max="200" value="10"/>
+                <lable for="blur">BLUR :</lable>
+                <input type="range" name="blur" min="0" max="25"  value="10"/>
+                <lable for="base">BASE-COLOR :</lable>
+                <input type="color" name="base" value="#ffc600"/>
             </div>
             <div class="image">
                 <img src="Capture.JPG">
