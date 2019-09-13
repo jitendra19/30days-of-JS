@@ -8,17 +8,15 @@
     <title>Document</title>
 </head>
 <body style="text-align: center;">
-    <style>
-        
-    </style>
-
-
-
+    <style></style>
+    <div class="variables">
+        <label>Speed</label>
+        <input type="range" min="1" max="30" name="speed" value="2">
+    </div>
     <div id="area">
 
 
     </div>
-
     <script>
         function getRandomInt(min, max) {
             min = Math.ceil(min);
@@ -26,29 +24,52 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
+        var elements = [];
+        var intervals = [];
+        const number = 500;
+
+        const speed =  document.querySelector('input');
+        
+        speed.addEventListener('change', ()=>{
+            console.log(speed.value)
+            for(let i=0; i<number; i++) {
+                clearInterval(intervals[i]);
+                intervals[i] = setInterval(()=>{
+                    elements[i].style.left = getRandomInt(0, 100) + '%';
+                                    
+                    const topValue = parseInt(elements[i].style.top.split('%')[0]);
+
+                    if(topValue >= 95) {
+                        elements[i].style.top = '0%';    
+                    } else {
+                        elements[i].style.top = getRandomInt(0, 95) + '%';
+                    }
+                }, speed.value); 
+            }
+        });
 
 
         const area = document.querySelector('#area');
+        
+        for(let i =0; i<number; i++) {
+            elements[i] = document.createElement('div');
+            elements[i].style.height = '10px';
+            elements[i].style.width = '1px';
+            elements[i].style.background = 'green';
+            elements[i].style.position = 'fixed';        
+            elements[i].style.top = getRandomInt(0, 95) + '%';
+            elements[i].style.left = getRandomInt(0, 100) + '%';
+            area.appendChild(elements[i]);        
 
-        for(let i =0 ; i<100;i++) {
-            const element = document.createElement('div');
-            element.style.height = '25px';
-            element.style.width = '2px';
-            element.style.background = 'green';
-            element.style.position = 'fixed';        
-            element.style.top = getRandomInt(0, 95) + '%';
-            element.style.left = getRandomInt(0, 100) + '%';
-            area.appendChild(element);        
-
-            var a = setInterval(()=>{
-                element.style.left = getRandomInt(0, 100) + '%';
+            intervals[i] = setInterval(()=>{
+                elements[i].style.left = getRandomInt(0, 100) + '%';
                                 
-                const topValue = parseInt(element.style.top.split('%')[0]);
-                console.log(topValue);
+                const topValue = parseInt(elements[i].style.top.split('%')[0]);
+
                 if(topValue >= 95) {
-                    element.style.top = '0%';    
+                    elements[i].style.top = '0%';    
                 } else {
-                    element.style.top = getRandomInt(0, 95) + '%';
+                    elements[i].style.top = getRandomInt(0, 95) + '%';
                 }
             }, 20);
         }                    
