@@ -9,11 +9,7 @@
 </head>
 <body style="text-align: center; background: black">
     <style></style>
-    <div class="variables">
-        <label>Speed</label>
-        <input type="range" min="1" max="100" name="speed" value="100">
-    </div>
-    <div id="area">
+    <div id="area" style="text-align: center">
 
 
     </div>
@@ -26,27 +22,7 @@
 
         var elements = [];
         var intervals = [];
-        const number = 130;
-
-        const speed =  document.querySelector('input');
-        
-        speed.addEventListener('change', ()=>{
-            // console.log(speed.value)
-            // for(let i=0; i<number; i++) {
-            //     clearInterval(intervals[i]);
-            //     intervals[i] = setInterval(()=>{
-            //         elements[i].style.left = getRandomInt(0, 100) + '%';
-                                    
-            //         const topValue = parseInt(elements[i].style.top.split('%')[0]);
-
-            //         if(topValue >= 95) {
-            //             elements[i].style.top = '0%';    
-            //         } else {
-            //             elements[i].style.top = getRandomInt(0, 95) + '%';
-            //         }
-            //     }, speed.value); 
-            // }
-        });
+        const number = 300;
 
 
         const area = document.querySelector('#area');
@@ -58,31 +34,29 @@
             elements[i].style.background = 'white';
             elements[i].style.position = 'fixed';     
             elements[i].style.borderRadius = '50px';        
-            elements[i].style.top = getRandomInt(-10, 100) + '%';
-            elements[i].style.left = getRandomInt(-10, 100) + '%';
-            elements[i].style.transform = `perspective(100px)  translate3d(10px, 10px, ${getRandomInt(-100, 10)}px)`;
+
+            elements[i].style.top = getRandomInt(0, 100) + '%';
+            elements[i].style.left = getRandomInt(0, 100) + '%';
+            
+            elements[i].style.transition = 'all 0.0s cubic-bezier(1,2,5.98,5)';
+            
+            elements[i].style.transform = `perspective(100px)  translate3d(10px, 10px, ${getRandomInt(-500, 100)}px)`;
+            elements[i].style['transform-style'] = 'preserve-3d';
 
             area.appendChild(elements[i]);        
 
             intervals[i] = setInterval(()=>{
                 let transforValue = parseInt(elements[i].style.transform.split('translate3d(')[1].split(' ')[2].split('px)')[0])+2;
-            
-                if(transforValue>100) {
-                    transforValue = 0;
-                    elements[i].style.transform = `perspective(100px) translate3d(${getRandomInt(0, 10)}px, ${getRandomInt(0, 10)}px, ${transforValue}px)`;
+
+                if(transforValue>getRandomInt(40, 100)) {
+                 
+                    elements[i].style.top = getRandomInt(0, 100) + '%';
+                    elements[i].style.left = getRandomInt(0, 100) + '%';
+                    elements[i].style.transform = `perspective(100px) translate3d(${getRandomInt(0, 10)}px, ${getRandomInt(0, 10)}px, ${getRandomInt(-500, 100)}px)`;
                 } else {
                     elements[i].style.transform = `perspective(100px) translate3d(10px, 10px, ${transforValue}px)`;
                 }
-
-                
-                // const topValue = parseInt(elements[i].style.top.split('%')[0]);
-
-                // if(topValue >= 95) {
-                //     elements[i].style.top = '0%';    
-                // } else {
-                //     elements[i].style.top = getRandomInt(0, 95) + '%';
-                // }
-            }, 10);
+            }, getRandomInt(10, 30));
         }                    
     </script>
 </body>
