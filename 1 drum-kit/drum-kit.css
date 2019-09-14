@@ -12,7 +12,7 @@
     margin: 1rem;
     font-size: 1.5rem;
     padding: 1rem .5rem;
-    transition: all 0.07s;
+    transition: all 0.09s;
     width: 100px;
     text-align: center;
     color: white;
@@ -21,7 +21,7 @@
 }
 
 .playing {
-    transform: scale(1.1);
+    transform: scale(5.9);
     border-color: #ffc600;
     box-shadow: 0 0 10px #ffc600;
 }
