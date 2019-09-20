@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chart</title>
+    </head>
+    <body>
+        <style>
+            .main-div {
+                height:50px;
+                
+                background-color: white;
+                padding: 2px;
+            }
+            .sub-div {
+                height: 100%;
+                transition: width 0.5s;
+                border-radius: 10px;
+                text-align: right;
+                vertical-align: middle;
+                font-weight: bold;
+            }
+            body {
+                width: 80%;
+                margin: auto;
+            }
+        </style>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: grey;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: pink;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: green;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: yellow;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: teal;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: skyblue;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: magenta;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: orange;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: seagreen;"></div></div>
+        <div class="main-div"><div id="sub" class="sub-div" style="background-color: lemonchiffon;"></div></div>
+        <script>
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            const subs = document.querySelectorAll('#sub');            
+            setInterval(() => {
+                subs.forEach((sub)=> {
+                    const width = `${getRandomInt(1, 100)}%`;
+                    sub.innerHTML = `<span class="">${width}</span>`;
+                    sub.style.width = width;               
+                });                
+            }, 500);
+        </script>
+    </body>
+</html>
